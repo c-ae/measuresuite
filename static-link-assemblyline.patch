@@ -1,0 +1,31 @@
+diff --git a/src-ts/binding.gyp b/src-ts/binding.gyp
+index d7762fb..c31b76d 100644
+--- a/src-ts/binding.gyp
++++ b/src-ts/binding.gyp
+@@ -4,8 +4,8 @@
+       "target_name": "measuresuite",
+       "sources": ["./measuresuite_binding.c"],
+       # the first include if for measuresuite.h, second for <node/node_api.h>
+-      "include_dirs": ["<(module_root_dir)/include", "<(module_root_dir)/../../../bins/node/include"],
+-      "libraries": ["<(module_root_dir)/lib/libmeasuresuite.a", "-lassemblyline"]
++      "include_dirs": ["<(module_root_dir)/include", "/usr/local/include"],
++      "libraries": ["<(module_root_dir)/lib/libmeasuresuite.a", "/usr/local/lib/libassemblyline.a"]
+     }
+   ]
+ }
+diff --git a/configure.ac b/configure.ac
+index 9adf3e0..e6b5ea1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,11 +19,7 @@ AM_PROG_AR
+ # Checks for libraries.
+ AC_CHECK_LIB([dl], [dlopen])
+ AC_CHECK_LIB([m], [ceil])
+-AC_CHECK_LIB([assemblyline], [asm_create_instance])
+-AC_SUBST([LIBASSEMBLYLINE_CFLAGS])
+-AC_SUBST([LIBASSEMBLYLINE_LIBS])
+ 
+-PKG_CHECK_MODULES([LIBASSEMBLYLINE], [assemblyline >= 1.2.0])
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([fcntl.h inttypes.h stdint.h sys/time.h unistd.h])

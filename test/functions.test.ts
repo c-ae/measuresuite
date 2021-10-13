@@ -1,0 +1,45 @@
+export const width = 1;
+export const numArgsIn = 1;
+export const numArgsOut = 1;
+export const functionA = [
+  "function_A:",
+  "    mov rax, [rsi]",
+  "    inc rax",
+  "    mov [rdi], rax",
+  "    ret",
+].join("\n");
+
+export const functionB = [
+  "function_B:",
+  "    push r9;",
+  "    push r12;",
+  "",
+  "    mov r9, 0x1;",
+  "    mov r12, 0xa;",
+  "",
+  "    shl r12, 1",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "    lea r9, [r9 + r9] ;",
+  "",
+  "    shr r12, 2 ",
+  "    mov cl, r12b",
+  "    shr r9, cl",
+  "    shr r9, cl",
+  "",
+  "    mov rax, [rsi]",
+  "    add rax, r9",
+  "    mov [rdi], rax",
+  "",
+  "    pop r12",
+  "    pop r9",
+  "    ret",
+].join("\n");
